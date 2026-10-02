@@ -1,6 +1,6 @@
 const squirrel=document.getElementById("squirrel"),
 magicBox=document.getElementById("magicBox"),
-authShell=document.getElementById("authShell"),
+authShell=document.getElementById("authShell"), 
 storyCopy=document.getElementById("storyCopy"),
 storyTitle=document.getElementById("storyTitle"),
 storyText=document.getElementById("storyText"),
