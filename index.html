@@ -1,174 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#111111">
-  <title>Forestly — Welcome</title>
-  <link rel="stylesheet" href="style.css?v=20261002bw1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111">
+  <title>Forestly | Little House</title>
+  <link rel="stylesheet" href="./style.css?v=clean-bw-1">
 </head>
 <body>
-  <main class="scene" id="scene">
-    <div class="grain"></div>
+<main id="app">
+
+  <div class="sky">
     <div class="moon"></div>
-    <div class="cloud cloud-a"></div>
-    <div class="cloud cloud-b"></div>
-    <div class="stars" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="stars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <!-- HOUSE -->
+  <div class="house-scene" aria-label="Old black and white wooden house">
+    <svg class="house-svg" viewBox="0 0 900 600" role="img" aria-label="Old wooden house">
+      <defs>
+        <linearGradient id="houseWall" x1="0" x2="1">
+          <stop offset="0" stop-color="#f7f7f7"/>
+          <stop offset="1" stop-color="#d9d9d9"/>
+        </linearGradient>
+        <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#111"/>
+          <stop offset="1" stop-color="#333"/>
+        </linearGradient>
+      </defs>
+      <!-- shadow -->
+      <ellipse cx="450" cy="565" rx="370" ry="25" fill="#000" opacity=".20"/>
+      <!-- house wall -->
+      <rect x="170" y="250" width="560" height="300" rx="4" fill="url(#houseWall)" stroke="#111" stroke-width="9"/>
+      <!-- timber frame -->
+      <g fill="#222">
+        <rect x="185" y="268" width="18" height="270"/>
+        <rect x="697" y="268" width="18" height="270"/>
+        <rect x="170" y="360" width="560" height="18"/>
+        <rect x="170" y="505" width="560" height="18"/>
+        <rect x="315" y="250" width="17" height="300"/>
+        <rect x="568" y="250" width="17" height="300"/>
+      </g>
+      <!-- roof -->
+      <path d="M95 270 L450 55 L805 270 Z" fill="url(#roof)" stroke="#050505" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M135 258 L450 78 L765 258" fill="none" stroke="#777" stroke-width="7" opacity=".7"/>
+      <!-- chimney -->
+      <rect x="625" y="105" width="65" height="135" fill="#444" stroke="#111" stroke-width="9"/>
+      <path d="M615 105h85v20h-85z" fill="#111"/>
+      <!-- attic window -->
+      <path d="M392 145 Q450 105 508 145 L508 220 L392 220Z" fill="#eee" stroke="#111" stroke-width="8"/>
+      <path d="M450 111v109M394 180h112" stroke="#111" stroke-width="8"/>
+      <!-- left window -->
+      <rect x="225" y="395" width="105" height="78" fill="#eee" stroke="#111" stroke-width="8"/>
+      <path d="M277 395v78M225 434h105" stroke="#111" stroke-width="7"/>
+      <!-- right window -->
+      <rect x="570" y="395" width="105" height="78" fill="#eee" stroke="#111" stroke-width="8"/>
+      <path d="M622 395v78M570 434h105" stroke="#111" stroke-width="7"/>
+      <!-- door -->
+      <rect x="405" y="350" width="90" height="200" rx="2" fill="#292929" stroke="#111" stroke-width="8"/>
+      <rect x="420" y="368" width="60" height="68" fill="none" stroke="#777" stroke-width="4"/>
+      <rect x="420" y="450" width="60" height="75" fill="none" stroke="#777" stroke-width="4"/>
+      <circle cx="475" cy="455" r="6" fill="#fff"/>
+      <!-- porch -->
+      <path d="M350 550h200l-18-38H368z" fill="#222" stroke="#111" stroke-width="8"/>
+      <rect x="360" y="500" width="15" height="68" fill="#111"/>
+      <rect x="525" y="500" width="15" height="68" fill="#111"/>
+    </svg>
+
+    <!-- SQUIRREL -->
+    <div class="squirrel" id="squirrel">
+      <div class="tail"></div>
+      <div class="sq-body"></div>
+      <div class="sq-head">
+        <b class="ear e1"></b><b class="ear e2"></b>
+        <b class="eye"></b><b class="nose"></b>
+      </div>
+      <div class="sq-arm"></div>
+      <div class="sq-leg l1"></div><div class="sq-leg l2"></div>
     </div>
 
-    <div class="ground ground-back"></div>
-    <div class="ground ground-front"></div>
+    <!-- MAGIC BOX -->
+    <div class="box" id="box">
+      <div class="box-aura"></div>
+      <div class="box-lid"><span>✦</span></div>
+      <div class="box-body"><b>✦</b></div>
+    </div>
+  </div>
 
-    <!-- Old wooden house -->
-    <section class="house" aria-label="Old wooden house">
-      <div class="chimney"><span></span><span></span></div>
-      <div class="roof">
-        <div class="roof-face"></div>
-        <div class="roof-line"></div>
+  <section class="intro" id="intro">
+    <div class="label">A LITTLE FOREST STORY</div>
+    <h1 id="sceneTitle">A quiet house in the woods…</h1>
+    <p id="sceneText">A little squirrel is sitting on the old roof.</p>
+  </section>
+
+  <div class="progress"><span id="progress"></span></div>
+
+  <div class="top-actions">
+    <button id="sound" type="button">♪</button>
+    <button id="replay" type="button">↻</button>
+  </div>
+
+  <!-- AUTH -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <section class="card">
+      <button class="x" id="close" type="button">×</button>
+
+      <div class="card-head">
+        <div class="seal">✦</div>
+        <div class="label">THE LITTLE HOUSE</div>
+        <h2 id="authHeading">Welcome back.</h2>
+        <p id="authSub">Sign in and continue your journey.</p>
       </div>
-      <div class="attic-window"><span></span></div>
 
-      <div class="house-body">
-        <div class="beam beam-v1"></div>
-        <div class="beam beam-v2"></div>
-        <div class="beam beam-h1"></div>
-        <div class="beam beam-h2"></div>
-
-        <div class="window window-left">
-          <span></span><span></span>
-        </div>
-        <div class="window window-right">
-          <span></span><span></span>
-        </div>
-
-        <div class="door">
-          <div class="door-panel"></div>
-          <div class="door-knob"></div>
-        </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="login" type="button">LOGIN</button>
+        <button class="tab" data-tab="register" type="button">REGISTER</button>
       </div>
 
-      <div class="porch">
-        <div class="porch-roof"></div>
-        <div class="porch-floor"></div>
-        <div class="post post-a"></div>
-        <div class="post post-b"></div>
+      <form id="login" class="form active" novalidate>
+        <label>Email<input id="email" type="email" placeholder="you@example.com" autocomplete="email"></label>
+        <label>Password
+          <span class="pass"><input id="password" type="password" placeholder="••••••••" autocomplete="current-password"><button type="button" data-pass="password">SHOW</button></span>
+        </label>
+        <div class="line"><label class="check"><input id="remember" type="checkbox"> Remember me</label><button id="forgot" class="link" type="button">Forgot?</button></div>
+        <button class="submit" type="submit">ENTER THE HOUSE <span>→</span></button>
+        <p class="switch">No account? <button class="link" data-tab="register" type="button">Create one</button></p>
+      </form>
+
+      <form id="register" class="form" novalidate>
+        <label>Full name<input id="name" type="text" placeholder="Your name" autocomplete="name"></label>
+        <label>Email<input id="regEmail" type="email" placeholder="you@example.com" autocomplete="email"></label>
+        <label>Password
+          <span class="pass"><input id="regPassword" type="password" placeholder="At least 6 characters" autocomplete="new-password"><button type="button" data-pass="regPassword">SHOW</button></span>
+        </label>
+        <label class="check terms"><input id="terms" type="checkbox"> I agree to the demo terms.</label>
+        <button class="submit" type="submit">CREATE ACCOUNT <span>→</span></button>
+        <p class="switch">Already registered? <button class="link" data-tab="login" type="button">Login</button></p>
+      </form>
+
+      <div class="success" id="success">
+        <div class="successMark">✓</div>
+        <div class="label">WELCOME</div>
+        <h3 id="successTitle">You are inside.</h3>
+        <p id="successText">The little house is waiting for you.</p>
+        <button class="submit" id="continue" type="button">CONTINUE</button>
       </div>
+
+      <div class="toast" id="toast"></div>
     </section>
-
-    <!-- Squirrel: pure CSS, no external image required -->
-    <div class="squirrel" id="squirrel" aria-label="Squirrel">
-      <div class="tail"><span></span></div>
-      <div class="squirrel-body"></div>
-      <div class="head">
-        <span class="ear ear-a"></span>
-        <span class="ear ear-b"></span>
-        <span class="eye"></span>
-        <span class="nose"></span>
-      </div>
-      <div class="arm"></div>
-      <div class="leg leg-a"></div>
-      <div class="leg leg-b"></div>
-    </div>
-
-    <!-- Magic box -->
-    <div class="magic-box" id="magicBox">
-      <div class="box-glow"></div>
-      <div class="box-lid">
-        <span class="lock"></span>
-      </div>
-      <div class="box-body">
-        <span class="box-symbol">✦</span>
-      </div>
-      <div class="box-light"></div>
-    </div>
-
-    <div class="story" id="story">
-      <p class="eyebrow">A LITTLE FOREST STORY</p>
-      <h1 id="storyTitle">A quiet house in the woods…</h1>
-      <p id="storyText">Someone is waiting on the old roof.</p>
-    </div>
-
-    <div class="progress" id="progress">
-      <span class="progress-fill"></span>
-    </div>
-
-    <div class="controls">
-      <button type="button" id="soundBtn" class="round-btn" aria-label="Toggle sound">♪</button>
-      <button type="button" id="replayBtn" class="round-btn" aria-label="Replay animation">↻</button>
-    </div>
-
-    <!-- Authentication panel -->
-    <section class="auth-wrap" id="authWrap" aria-hidden="true">
-      <div class="auth-card">
-        <button class="close-auth" id="closeAuth" type="button" aria-label="Close">×</button>
-
-        <div class="auth-copy">
-          <span class="mini-mark">✦</span>
-          <p class="eyebrow">WELCOME HOME</p>
-          <h2 id="authTitle">Enter the forest.</h2>
-          <p id="authSubtitle">Sign in to continue your little journey.</p>
-        </div>
-
-        <div class="tabs">
-          <button class="tab active" data-mode="login" type="button">Login</button>
-          <button class="tab" data-mode="register" type="button">Register</button>
-        </div>
-
-        <form id="loginForm" class="auth-form active" novalidate>
-          <label>
-            Email
-            <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
-          </label>
-          <label>
-            Password
-            <span class="password-field">
-              <input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••" required>
-              <button class="show-pass" type="button" data-target="loginPassword">Show</button>
-            </span>
-          </label>
-          <div class="form-row">
-            <label class="check"><input id="remember" type="checkbox"> <span>Remember me</span></label>
-            <button type="button" class="text-btn" id="forgotBtn">Forgot password?</button>
-          </div>
-          <button class="primary-btn" type="submit">Enter the house <span>→</span></button>
-          <p class="switch-line">No account? <button type="button" class="text-btn switch-btn" data-mode="register">Create one</button></p>
-        </form>
-
-        <form id="registerForm" class="auth-form" novalidate>
-          <label>
-            Full name
-            <input id="regName" type="text" autocomplete="name" placeholder="Your name" required>
-          </label>
-          <label>
-            Email
-            <input id="regEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
-          </label>
-          <label>
-            Password
-            <span class="password-field">
-              <input id="regPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters" required>
-              <button class="show-pass" type="button" data-target="regPassword">Show</button>
-            </span>
-          </label>
-          <label class="check terms"><input id="terms" type="checkbox"> <span>I agree to the demo terms.</span></label>
-          <button class="primary-btn" type="submit">Create account <span>→</span></button>
-          <p class="switch-line">Already registered? <button type="button" class="text-btn switch-btn" data-mode="login">Login</button></p>
-        </form>
-
-        <div class="success" id="success">
-          <div class="success-icon">✓</div>
-          <p class="eyebrow">WELCOME</p>
-          <h3 id="successTitle">You are inside.</h3>
-          <p id="successText">The little house is yours for this visit.</p>
-          <button class="primary-btn" id="successBack" type="button">Continue</button>
-        </div>
-
-        <p class="toast" id="toast" role="status"></p>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js?v=20261002bw1"></script>
+  </div>
+</main>
+<script src="./script.js?v=clean-bw-1"></script>
 </body>
 </html>
