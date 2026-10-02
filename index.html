@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10251b">
+  <title>Forestly — Create Account</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="scene" id="scene">
+    <div class="sky-glow"></div><div class="sun"></div>
+    <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
+    <div class="fireflies" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="leaf-layer" id="leafLayer" aria-hidden="true"></div>
+
+    <section class="forest">
+      <div class="tree">
+        <div class="trunk"></div><div class="branch branch-a"></div><div class="branch branch-b"></div>
+        <div class="canopy canopy-a"></div><div class="canopy canopy-b"></div><div class="canopy canopy-c"></div>
+        <div class="canopy canopy-d"></div><div class="canopy canopy-e"></div>
+      </div>
+    </section>
+
+    <div class="ground">
+      <div class="ground-light"></div>
+      <div class="pebble p1"></div><div class="pebble p2"></div><div class="pebble p3"></div><div class="pebble p4"></div>
+    </div>
+
+    <div class="squirrel" id="squirrel" aria-hidden="true">
+      <svg viewBox="0 0 180 190" class="squirrel-svg">
+        <defs>
+          <linearGradient id="fur" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d98a45"/><stop offset="1" stop-color="#9b4f28"/></linearGradient>
+          <linearGradient id="tail" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edaa61"/><stop offset="1" stop-color="#9b4f28"/></linearGradient>
+        </defs>
+        <path class="tail-shape" d="M57 89 C8 86,3 32,45 16 C77 4,97 33,77 57 C62 75,44 64,50 47 C54 35,70 36,73 47 C80 18,42 18,29 35 C7 64,42 95,75 99 Z"/>
+        <ellipse class="body-shape" cx="91" cy="116" rx="42" ry="53"/>
+        <circle class="head-shape" cx="105" cy="65" r="38"/>
+        <path class="ear" d="M80 42 L78 8 Q97 16 103 37 Z"/><path class="ear" d="M119 37 L137 10 Q142 31 132 47 Z"/>
+        <ellipse class="belly" cx="99" cy="126" rx="24" ry="34"/>
+        <circle class="eye" cx="118" cy="58" r="4.8"/><circle class="eye-shine" cx="120" cy="56" r="1.6"/>
+        <ellipse class="nose" cx="139" cy="70" rx="5" ry="4"/><path class="smile" d="M130 77 Q137 82 142 77"/>
+        <path class="arm" d="M75 103 Q55 113 63 130"/><path class="arm" d="M116 105 Q137 112 132 128"/>
+        <ellipse class="foot" cx="72" cy="166" rx="18" ry="8"/><ellipse class="foot" cx="112" cy="168" rx="18" ry="8"/>
+        <circle class="acorn" cx="84" cy="117" r="7"/><path class="acorn-cap" d="M77 115 Q84 107 91 115"/>
+      </svg>
+      <span class="squirrel-shadow"></span>
+    </div>
+
+    <div class="magic-box" id="magicBox" aria-hidden="true">
+      <div class="box-aura"></div><div class="box-glow"></div>
+      <div class="box-lid"><span class="lid-band"></span><span class="lid-gem">✦</span></div>
+      <div class="box-body"><span class="box-band"></span><span class="box-lock">✦</span></div>
+    </div>
+
+    <div class="story-copy" id="storyCopy">
+      <span class="story-kicker">A little forest story</span>
+      <h1 id="storyTitle">Something is waking up...</h1>
+      <p id="storyText">Follow the little visitor.</p>
+      <div class="story-dots"><span></span><span></span><span></span></div>
+    </div>
+
+    <section class="register-shell" id="registerShell" aria-hidden="true">
+      <div class="card-orbit"></div>
+      <div class="register-card">
+        <button class="close-btn" id="closeBtn" type="button" aria-label="Close registration">×</button>
+        <div class="card-icon">
+          <svg viewBox="0 0 80 80" aria-hidden="true">
+            <circle cx="40" cy="40" r="38" fill="#edf7e8"/>
+            <path d="M24 48 Q40 24 56 48" fill="none" stroke="#6e9c5d" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="31" cy="34" r="4" fill="#9b4f28"/><circle cx="49" cy="34" r="4" fill="#9b4f28"/>
+            <path d="M33 54 Q40 60 47 54" fill="none" stroke="#9b4f28" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-heading">
+          <span>WELCOME TO THE FOREST</span>
+          <h2>Create your account</h2><p>A quiet little place for curious people.</p>
+        </div>
+
+        <form id="registerForm" novalidate>
+          <label class="field"><span>Full name</span>
+            <input id="name" type="text" autocomplete="name" placeholder="Your name" required>
+            <small class="error" id="nameError"></small>
+          </label>
+          <label class="field"><span>Email address</span>
+            <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <small class="error" id="emailError"></small>
+          </label>
+          <label class="field"><span>Password</span>
+            <div class="password-wrap">
+              <input id="password" type="password" autocomplete="new-password" placeholder="At least 6 characters" minlength="6" required>
+              <button class="show-pass" id="showPass" type="button">Show</button>
+            </div>
+            <small class="error" id="passwordError"></small>
+          </label>
+          <label class="terms"><input id="terms" type="checkbox" required><span>I agree to the <b>forest rules</b> and privacy terms.</span></label>
+          <button class="submit-btn" type="submit"><span>Create account</span><span class="submit-arrow">→</span></button>
+        </form>
+
+        <div class="success-panel" id="successPanel">
+          <div class="success-ring"><span>✓</span></div>
+          <span class="success-kicker">WELCOME ABOARD</span>
+          <h3>You're officially in.</h3>
+          <p>Welcome, <strong id="successName">friend</strong>. The forest saved your place.</p>
+          <button class="again-btn" id="againBtn" type="button">Explore again</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="controls">
+      <button class="control-btn" id="musicBtn" type="button" aria-pressed="false"><span class="control-icon">♫</span><span id="musicLabel">Sound off</span></button>
+      <button class="control-btn" id="replayBtn" type="button"><span class="control-icon">↻</span><span>Replay</span></button>
+    </div>
+    <div class="progress"><span id="progressBar"></span></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
