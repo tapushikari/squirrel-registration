@@ -54,7 +54,7 @@ function resetVisuals(){
   setStory("Something is waking up...","Follow the little visitor.");progressBar.style.width="0%";
 }
 async function runStory(){
-  const t=++token;resetVisuals();await wait(500);if(t!==token)return;
+  resetVisuals();const t=token;await wait(500);if(t!==token)return;
   setStory("A little visitor is here...","Something moved in the old tree.");
   squirrel.style.transform="translateY(0)";leafBurst(5);progressBar.style.width="12%";
   await wait(1800);if(t!==token)return;
@@ -215,8 +215,23 @@ function playSuccessSound(){
   },i*130))
 }
 musicBtn.addEventListener("click",()=>soundOn?stopAudio():startAudio());
-window.addEventListener("load",()=>{
-  const remembered=localStorage.getItem("forestlyRemember")==="true";
-  if(remembered){const u=getUser();if(u){loginEmail.value=u.email;rememberMe.checked=true}}
-  runStory();
-});
+function startForestly(){
+  // Storage can be blocked in some browser privacy modes; the story must still run.
+  try {
+    const remembered=localStorage.getItem("forestlyRemember")==="true";
+    if(remembered){const u=getUser();if(u){loginEmail.value=u.email;rememberMe.checked=true}}
+  } catch (err) {
+    console.warn("Browser storage is unavailable; animation will still start.", err);
+  }
+  runStory().catch(err=>{
+    console.error("Forestly animation could not start:", err);
+    storyCopy.classList.add("hidden");
+    authShell.classList.add("show");
+    authShell.setAttribute("aria-hidden","false");
+  });
+}
+if(document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startForestly, { once:true });
+} else {
+  startForestly();
+}
